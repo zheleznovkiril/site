@@ -9,11 +9,14 @@
   
 		<div class="form">
 			<h1>Авторизация</h1>
-				<form name="Авторизация" method="post">
+				<form name="Авторизация" method="POST">
 					<div> <input type="text" name="username" placeholder="Имя пользователя" required /> </div>
 					<div> <input type="password" name="password" placeholder="Пароль" required /> </div>
-					<div> <input type="submit" value="Войти" /> </div>
-</form>
+					<div> <input type="submit" value="Войти" /> </div>					
+				</form>
+					<div>Ещё нет аккаунта?
+					<a href="тут будет что-то наверно"> Зарегистрируйтесь сейчас! </a>
+					</div> 
 		</div>
 
 
