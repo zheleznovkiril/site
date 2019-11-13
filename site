@@ -3,9 +3,15 @@
   
 	<head>
 		<charset meta="utf-8">
+		
+		<style>
+			h1 {
+				font-size: 400%;
+			}
+		</style>
 	</head>
   
-	<body>
+	<body background="fon.jpg" width="100%">
   
 		<div class="form">
 			<h1>Авторизация</h1>
