@@ -8,6 +8,11 @@
 			h1 {
 				font-size: 400%;
 			}
+			
+			.form {
+				background-color: #2f3820;
+				width: 400px;
+			}
 		</style>
 	</head>
   
