@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   
-  <head>
-    <charset meta="utf-8">
-  </head>
+	<head>
+		<charset meta="utf-8">
+	</head>
   
-  <body>
-    
-  </body>
+	<body>
+  
+		<div class="form">
+			<h1>Авторизация</h1>
+				<form name="Авторизация" method="post">
+					<div> <input type="text" name="username" placeholder="Имя пользователя" required /> </div>
+					<div> <input type="password" name="password" placeholder="Пароль" required /> </div>
+					<div> <input type="submit" value="Войти" /> </div>
+</form>
+		</div>
+
+
+ </body>
   
 </html>
