@@ -13,7 +13,7 @@
 				background-color: #2f3820;
 				width: 400px;
 			}
-			html {
+			body {
 				 background: url(fon.jpg);
 				 background-size: cover;
 			}
