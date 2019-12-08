@@ -48,12 +48,6 @@ hr {
 	background-size: cover;
 }
 
-#main1
-{
-	background: url(fon1.png) no-repeat center center;
-	background-size: cover;
-}
-
 #header {
 	position: relative;
 	overflow: hidden;
