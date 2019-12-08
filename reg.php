@@ -1,55 +1,93 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
+
 <html>
 	<head>
-		<charset meta="utf-8">
-		<link rel="stylesheet" href="style.css" />
-		<link rel="stylesheet" href="styleactive.css" />
-		<link rel="stylesheet" href="stylemain.css" />
+		<meta charset="utf-8" />
+		<title>Регистрация | ДЗ</title>
+		<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="imghover.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	</head>
-	
 	<body>
-	
-		<div class="logo2">
-			<h1>Hello, world?</h1>
+
+	<div id="fon">
+		<div id="main">
+			<div id="header" class="content">
+				<div class="logotype" >
+					
+				</div>
+			</div>
+			<div id="menu" class="content">
+				<ul>
+					<li><a href="index.php">Главная страница</a></li>
+					<li><a href="#">Чатик</a></li>
+					<li><a href="#">Все статьи</a></li>
+					<li><a href="author.php">Об "авторе"</a></li>
+					<li><a href="#">Цитатки</a></li>
+					<?php if(isset($_SESSION["username"])){
+					echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
+						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
+					<?php 
+						if(isset($_SESSION["username"]))
+							echo "<li><a href='#'><img id='v' class='logout' src='vihod.png'></a></li>" ?>
+				</ul>
+			</div>
 		</div>
-		
-		<div class="content">
-			<h1> Регистрация </h1>
-			<p align="center">Уже зарегистрированы?
-			<a href="login.html">Авторизация</a></p>
-				<form name="register" method="POST">
-					<div class="registr">
-						<label>Введите Ваше имя: <br/><input class="input" type="text" name="username" placeholder="Имя пользователя" required /></label><br/>
-						<label>Введите Вашу почту: <br/><input class="input" type="email" name="email" placeholder="Почта" required /></label><br/>
-						<label>Введите пароль: <br/><input class="input" type="password" name="password" placeholder="Пароль" required /></label><br/>
-						<label>Подтвердите пароль: <br/><input class="input" type="password" name="pass2" placeholder="Подтвердите пароль" required /></label><br/>
-						<label>Выберите расу: <br/>
-						
-						<div class="ras1">
-						<label><img class="man" src="человек.jpg"></label><input for="man" type="radio" name="ras" value="man" hidden required /><br/>
-						<label><img class="elf" src="эльф.jpg"><input type="radio" name="ras" value="elf" hidden required /></label><br/>
-						<label><img class="ork" src="орк.jpg"><input type="radio" name="ras" value="ork" hidden required /></label><br/>
-						<label><img class="panda" src="пандарин.jpg"><input type="radio" name="ras" value="panda" hidden required /></label><br/>
-						</div>
-						
-						<div class="ras2">
-						
-						</div>
-						</label><br/>
-						<input class="inp" type="submit" name="submit" value="Зарегистрироваться" /><br/>
-					</div>
-				</form>		
-				
-		</div>
+		<form name="register" method="POST">
+		<div id="page" class="content">
+				<h1 class="reg">Регистрация</h1></br></br></br></br></br>
+				<label>Введите Ваше имя:</label><br/> </br></br>
+				<label>Введите Вашу почту:</label><br/> </br></br>
+				<label>Введите пароль:</label><br/> </br></br>
+				<label>Подтвердите пароль:</label><br/> </br></br>
+				<input class="inp" type="submit" name="submit" value="Зарегистрироваться" /><br/><br/><br/>
+				<p class="not">Уже есть аккаунт? <a href="login.php">Авторизоваться</a></p>
+		</div>	
+			<div class="vvesti">
 			
-		<div class="left">
+					<input class="input" type="text" name="username" placeholder="Имя пользователя" required /> </br>
+					<input class="input" type="email" name="email" placeholder="Почта" required /> </br>
+					<input class="input" type="password" name="password" placeholder="Пароль" required /> </br>
+					<input class="input" type="password" name="pass2" placeholder="Подтвердите пароль" required /> </br>
+				
+											<?php
+							require('db.php');
+							if (isset($_REQUEST['username'])){
+							$username = stripslashes($_REQUEST['username']);
+							$username = mysqli_real_escape_string($con,$username);
+							$email = stripslashes($_REQUEST['email']);
+							if (preg_match("/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-
+							9_-]+)*\.[a-z]{2,6}$/", $email)){
+							$email = mysqli_real_escape_string($con,$email);
+							};
+							$password = stripslashes($_REQUEST['password']);
+							$pass2 = stripslashes($_REQUEST['pass2']);
+							if ($password == $pass2)
+							{
+							$password = mysqli_real_escape_string($con,$password);
+							$trn_date = date("Y-m-d H:i:s");
+							$query = "INSERT into `users` (username, password, email, trn_date)
+							VALUES ('$username', '".md5($password)."', '$email',
+							'$trn_date')";
+							$result = mysqli_query($con,$query);
+							if ($result){
+							echo "<div>
+							<h3>Вы успешно зарегистрировались!</h3></div>";
+							};
+							};
+							if ($password != $pass2)
+							echo "<div class='error'>Пароли не совпадают, попробуйте
+							еще раз <br/> Прошу прощения за неудобство <br/></div>";
+							};
+?>
+			</div>
+			</form>		
+		<div id="down">
+			<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
 		</div>
-		
-		<div class="right">
-		</div>
-		
-		<div class="down">
-			<p>IU-4</p>
-		</div>
+	</div>
 	</body>
 </html>

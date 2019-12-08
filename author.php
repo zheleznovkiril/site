@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -16,13 +19,17 @@
 				</div>
 				<div id="menu" class="content">
 					<ul>
-						<li><a href="#">Главная страница</a></li>
+						<li><a href="index.php">Главная страница</a></li>
 						<li><a href="#">Чатик</a></li>
 						<li><a href="#">Все статьи</a></li>
-						<li class="vibor"><a href="author.html" title="">Об "авторе"</a></li>
+						<li class="vibor"><a>Об "авторе"</a></li>
 						<li><a href="#">Цитатки</a></li>
-						<li><a href="#"><img id="v1" src="pol.png"></a></li>
-						<li><a href="#"><img id="v" class="logout" src="vihod.png"></a></li>
+					<?php if(isset($_SESSION["username"])){
+						echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
+						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
+					<?php 
+						if(isset($_SESSION["username"]))
+							echo "<li><a href='#'><img id='v' class='logout' src='vihod.png'></a></li>" ?>
 					</ul>
 				</div>
 			</div>

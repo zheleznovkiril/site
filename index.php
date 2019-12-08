@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -22,10 +25,14 @@
 					<li class="vibor"><a href="#">Главная страница</a></li>
 					<li><a href="#">Чатик</a></li>
 					<li><a href="#">Все статьи</a></li>
-					<li><a href="author.html" title="">Об "авторе"</a></li>
+					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
-					<li><a href="#"><img id="v1" src="pol.png"></a></li>
-					<li><a href="#"><img id="v" class="logout" src="vihod.png"></a></li>
+					<?php if(isset($_SESSION["username"])){
+					echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
+						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
+					<?php 
+						if(isset($_SESSION["username"]))
+							echo "<li><a href='#'><img id='v' class='logout' src='vihod.png'></a></li>" ?>
 				</ul>
 			</div>
 		</div>
@@ -38,14 +45,14 @@
 			</div>
 			<div class="block2">
 				<div>
-					<h2 class="cent">Оффлайн-новости </h2>
+					<h2>Оффлайн-новости </h2>
 				</div>
 				<img src="offline.jpg" width="282" height="150" alt="" />
 				<p>Эти статьи посвящены всему, что связано с сингловыми играми.</p>
 			</div>
 			<div class="block3">
 				<div>
-					<h2 class="cent">Онлайн-новости</h2>
+					<h2>Онлайн-новости</h2>
 				</div>
 				<img src="online.jpg" width="282" height="150" alt="" />
 				<p>Как не сложно догадаться - жмякнув сюда, Вы увидите статьи, посвященные онлайн сегменту.</p>

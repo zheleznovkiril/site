@@ -51,7 +51,7 @@ hr {
 #header {
 	position: relative;
 	overflow: hidden;
-	height: 600px;
+	height: 1000px;
 }
 
 #menu {
@@ -122,7 +122,7 @@ hr {
 		color: rgba(0,0,0,0.7);
 }
 
-#down a {
+a {
 		color: rgba(0,0,0,0.7);
 }
 
@@ -134,9 +134,7 @@ hr {
 	height: 25px;
 }
 
-	.block1,
-	.block2,
-	.block3
+.block1, .block2, .block3
 	{
 		float: left;
 		margin-right: 110px;
@@ -173,10 +171,45 @@ html:active {
   transition: all 0.3s ease;
 }
 
-a:hover, img:hover {
+a:hover, img:hover, label:hover, input:hover {
 	cursor: url(kurs2.png), auto;
 }
 
-a:active, img:active {
+a:active, img:active, label:active, input:active {
 	cursor: url(kurs3.png), auto;
+}
+
+label {
+	left: 40%;
+	position: absolute;
+}
+
+.reg {
+	left: 44%;
+	position: absolute;
+}
+
+input {
+    width:  200px;
+    height: 55px;
+    padding: 5px 10px 5px 10px;
+    border:1px solid #999;
+    font-size:16px;
+    font-family: Tahoma;
+}	
+
+.vvesti {
+	top: 108%;
+	left: 50%;
+	position: absolute;
+}
+
+.inp {
+	left: 45%;
+	position: absolute;
+}
+
+.not {
+	position: absolute;
+	left: 40%;
 }
