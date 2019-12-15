@@ -6,7 +6,7 @@
 <html>
 		<head>
 			<meta charset="utf-8" />
-			<title>Об "авторе" | ДЗ</title>
+			<title>О пользователе | ДЗ</title>
 			<link href="style.css" rel="stylesheet" type="text/css" media="all" />
 			<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		</head>
@@ -22,10 +22,10 @@
 						<li><a href="index.php">Главная страница</a></li>
 						<li><a href="#">Чатик</a></li>
 						<li><a href="#">Все статьи</a></li>
-						<li class="vibor"><a>Об "авторе"</a></li>
+						<li><a href="author.php">Об "авторе"</a></li>
 						<li><a href="#">Цитатки</a></li>
 					<?php if(isset($_SESSION["username"])){
-						echo "<li><a href='account.php'><img id='v1' src='pol.png'></a></li>";}
+						echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
 						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
 					<?php 
 						if(isset($_SESSION["username"]))
@@ -35,12 +35,13 @@
 			</div>
 			<div id="page" class="content">
 				<div class="me">
-						<img border="2" src="me.gif" width="500" alt="" />
+						<img border="2" src="avatar.png" width="300" alt="" />
 				</div>
 					<div class="me2">
-							<p>Это, собственно, автор сайта.</p>
-							<p>Возраст: 18 лет.</p>
-							<p>E-mail: zheleznov.kirill01@mail.ru</p>
+							<p>Думаю, Вы сами знаете, что вы зарегистрированы под ником <?php
+											echo $_SESSION['username'];?>.</p>
+							<p>В будующем я добавлю и другие Ваши данные сюда, но сейчас мне лень.</p>
+				
 					</div>
 				
 			</div>

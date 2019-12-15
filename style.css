@@ -127,10 +127,12 @@ a {
 }
 
 #v {
+	float: right;
 	height: 20px;
 }
 
 #v1 {
+	float: right;
 	height: 25px;
 }
 
@@ -141,12 +143,12 @@ a {
 		width: 24%;
 	}
 	
-	.me {
+.me {
 		float: left;
 		margin-right: 110px;
 	}
 	
-	.me2 {
+.me2 {
 		float: left;
 	}
 	
@@ -199,9 +201,8 @@ input {
 }	
 
 .vvesti {
-	top: 108%;
-	left: 50%;
-	position: absolute;
+	top: 0%;
+	position: relative;
 }
 
 .inp {

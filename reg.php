@@ -38,31 +38,20 @@
 		</div>
 		<form name="register" method="POST">
 		<div id="page" class="content">
-				<h1 class="reg">Регистрация</h1></br></br></br></br></br>
+				<h1 class="reg">Регистрация</h1></br></br></br></br>
 				<label>Введите Ваше имя:</label><br/> </br></br>
 				<label>Введите Вашу почту:</label><br/> </br></br>
 				<label>Введите пароль:</label><br/> </br></br>
-				<label>Подтвердите пароль:</label><br/> </br></br>
+				<label>Подтвердите пароль:</label><br/> </br></br></br>
 				<input class="inp" type="submit" name="submit" value="Зарегистрироваться" /><br/><br/><br/>
 				<p class="not">Уже есть аккаунт? <a href="login.php">Авторизоваться</a></p>
-		</div>	
-			<div class="vvesti">
-			
-					<input class="input" type="text" name="username" placeholder="Имя пользователя" required /> </br>
-					<input class="input" type="email" name="email" placeholder="Почта" required /> </br>
-					<input class="input" type="password" name="password" placeholder="Пароль" required /> </br>
-					<input class="input" type="password" name="pass2" placeholder="Подтвердите пароль" required /> </br>
-				
-											<?php
+			<?php
 							require('db.php');
 							if (isset($_REQUEST['username'])){
 							$username = stripslashes($_REQUEST['username']);
 							$username = mysqli_real_escape_string($con,$username);
 							$email = stripslashes($_REQUEST['email']);
-							if (preg_match("/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-
-							9_-]+)*\.[a-z]{2,6}$/", $email)){
 							$email = mysqli_real_escape_string($con,$email);
-							};
 							$password = stripslashes($_REQUEST['password']);
 							$pass2 = stripslashes($_REQUEST['pass2']);
 							if ($password == $pass2)
@@ -70,20 +59,26 @@
 							$password = mysqli_real_escape_string($con,$password);
 							$trn_date = date("Y-m-d H:i:s");
 							$query = "INSERT into `users` (username, password, email, trn_date)
-							VALUES ('$username', '".md5($password)."', '$email',
-							'$trn_date')";
+							VALUES ('$username', '".md5($password)."', '$email', '$trn_date')";
 							$result = mysqli_query($con,$query);
 							if ($result){
-							echo "<div>
-							<h3>Вы успешно зарегистрировались!</h3></div>";
+							echo "</br><p class='not'>Вы успешно зарегистрировались!</p>";
 							};
 							};
 							if ($password != $pass2)
-							echo "<div class='error'>Пароли не совпадают, попробуйте
-							еще раз <br/> Прошу прощения за неудобство <br/></div>";
+							echo "</br><p class='not'>Пароли не совпадают, попробуйте
+							еще раз. Прошу прощения за неудобство <br/></p>";
 							};
-?>
-			</div>
+					?>
+				<div class="vvesti"></br></br>
+						<input class="input" type="text" name="username" placeholder="Имя пользователя" required /> </br>
+						<input class="input" type="email" name="email" placeholder="Почта" required /> </br>
+						<input class="input" type="password" name="password" placeholder="Пароль" required /> </br>
+						<input class="input" type="password" name="pass2" placeholder="Подтвердите пароль" required /> </br>
+				
+				</div>
+		</div>	
+	</div>	
 			</form>		
 		<div id="down">
 			<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
