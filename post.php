@@ -68,6 +68,12 @@
 									<h1><?php echo $art['title']; ?></h1>
 									<p><?php echo $art['text']; ?></p>
 									<a><?php echo $art['views']; ?> просмотров</a>
+									<?php if(isset($_SESSION['username'])) {if($_SESSION['username'] == 'admin') {?> <p><form>
+										<input name='delete' type='submit' method='POST' action='/post.php' value="Удалить статью" />
+										</form></p><?php } ?>
+									<?php  if( isset($_POST['delete'])){
+										$delete = mysqli_query($con, "DELETE FROM `articles` WHERE `id` = " . (int) $_GET['id']);
+									}}?>
 								</div>
 			
 				
@@ -92,6 +98,12 @@
 								<h4><?php echo $com['author']; ?></h4>
 								<p>Комментарий:<?php echo $com['text']; ?></p></a>
 								<p>Дата комментирования:<?php echo $com['pubdate']; ?></p>
+								<?php if(isset($_SESSION['username'])) {if($_SESSION['username'] == 'admin') {?> <p><form>
+										<input name='deletecom' type='submit' method='POST' action='/post.php' value="Удалить комментарий" />
+										</form></p><?php } ?>
+									<?php  if( isset($_POST['deletecom'])){
+										$deletecom = mysqli_query($con, "DELETE FROM `comments` WHERE `text` = '$text'" );
+									}}?>
 							</div>
 						</article>
 
@@ -106,8 +118,8 @@
 							<label class="label_2">Ваше мнение: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input class="input" type="text" name="text" placeholder="Ваш комментарий"  /> </br></label><br/></br></br></br>
 							<input class="inp_2" type="submit" name="do_post" value="Хоба" /><br/><br/><br/>
 							</form>
-							<?php
-								$author = $_SESSION['username'];
+							<?php if(isset($_SESSION['username'])) {
+							$author = $_SESSION['username'];}
 								if( isset($_POST['do_post']) )
 								{
 									$errors = array();
