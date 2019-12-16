@@ -38,7 +38,7 @@ hr {
 }
 
 .content {
-	width: 71.7%;
+	width: 80%;
 	margin: 0px auto;
 }
 
@@ -82,7 +82,7 @@ hr {
 	text-decoration: none;
 	text-transform: uppercase;
 	text-align: center;
-	font-size: 95%;
+	font-size: 80%;
 	font-weight: 200;
 	color: rgba(255,255,255,0.5);
 	border: none;
@@ -144,7 +144,7 @@ a {
 .block1, .block2, .block3
 	{
 		float: left;
-		margin-right: 110px;
+		margin-right: 80px;
 		width: 24%;
 	}
 	
@@ -215,6 +215,11 @@ input {
 	position: absolute;
 }
 
+.inp_2 {
+	left: 37%;
+	position: absolute;
+}
+
 .not {
 	position: absolute;
 	left: 40%;
@@ -231,3 +236,19 @@ input {
 	border-radius: 10px;
 	overflow: hidden;
 }
+
+.comm {
+	width: 50%;
+	left: 25%;
+	margin-top: 25px;
+	background: rgba(255,255,255);
+	position: relative;
+}
+
+.commain {
+	border: 2px solid;
+	border-radius: 10px;
+	width: 70%;
+	margin-top: 25px;
+}
+

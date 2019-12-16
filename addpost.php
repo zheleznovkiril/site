@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	if($_SESSION['username'] != 'admin') {
+	header("Location: dontauth.php");} 
 ?>
 <!DOCTYPE html>
 
@@ -24,8 +26,8 @@
 				<ul>
 					<li><a href="index.php">Главная страница</a></li>
 					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='chat.php'>Чатик</a></li>";}
-						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?></li>
+					echo "<a href='chat.php'>Что-то</a></li>";}
+						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>

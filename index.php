@@ -24,8 +24,8 @@
 				<ul>
 					<li class="vibor"><a href="#">Главная страница</a></li>
 					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='chat.php'>Чатик</a></li>";}
-						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?>
+					echo "<a href='#'>Что-то</a></li>";}
+						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?>
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
@@ -50,14 +50,14 @@
 					<h2>Оффлайн-новости </h2>
 				</div>
 				<img src="offline.jpg" width="282" height="150" alt="" />
-				<p>Эти статьи посвящены всему, что связано с сингловыми играми.</p>
+				<p>Тут вы встретите новости, посвящённые оффлайн играм.</p>
 			</div>
 			<div class="block3">
 				<div>
 					<h2>Онлайн-новости</h2>
 				</div>
 				<img src="online.jpg" width="282" height="150" alt="" />
-				<p>Как не сложно догадаться - жмякнув сюда, Вы увидите статьи, посвященные онлайн сегменту.</p>
+				<p>Также на этом сайте будут новости, посвященные онлайн сегменту.</p>
 			</div>
 			
 		</div>

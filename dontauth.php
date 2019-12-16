@@ -21,8 +21,8 @@
 					<ul>
 						<li><a href="index.php">Главная страница</a></li>
 						<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='chat.php'>Чатик</a></li>";}
-						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?></li>
+					echo "<a href='#'>Что-то</a></li>";}
+						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
 						<li><a href="stat.php">Все статьи</a></li>
 						<li><a href="author.php">Об "авторе"</a></li>
 						<li><a href="#">Цитатки</a></li>
@@ -40,7 +40,8 @@
 						<img src="sorry.png" width="300" alt="" />
 				</div>
 					<div class="me2">
-							<p>УПС... Похоже Вы не авторизованы. Чтобы узнать, что тут, авторизуйтесь.</p>
+							<p>УПС... Похоже Вы не авторизованы/не имеете доступ к этому файлу.</p> 
+							<p>Чтобы узнать, что тут, авторизуйтесь/запросите доступ к файлу.</p>
 					</div>
 				
 			</div>

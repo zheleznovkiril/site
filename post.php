@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Добавление поста | ДЗ</title>
+		<title>Пост | ДЗ</title>
 		<link href="style.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	</head>
@@ -24,8 +24,8 @@
 				<ul>
 					<li><a href="index.php">Главная страница</a></li>
 					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='chat.php'>Чатик</a></li>";}
-						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?></li>
+					echo "<a href='#'>Что-то</a></li>";}
+						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
@@ -59,23 +59,76 @@
 							} else 
 							{ 
 								$art = mysqli_fetch_assoc($article);
+								mysqli_query($con, "UPDATE `articles` SET `views` = `views` + 1 WHERE `id` = " . $art['id']);
 								?> 
 								<div class="me">
 										<img src="avatar.png" width="300" alt="" />
 								</div>
 								<div class="me2">
-									<h1><?php echo $art['title'] ?></h1>
-									<p><?php echo $art['text'] ?></p>
+									<h1><?php echo $art['title']; ?></h1>
+									<p><?php echo $art['text']; ?></p>
+									<a><?php echo $art['views']; ?> просмотров</a>
 								</div>
-				<?php
-							}
-				?>
+			
 				
 				
 		</div>
 		</form>		
-	</div>	
-				
+	</div>
+
+		<div align="center" class="comm" >
+			<h3>Комментарии</h3>
+				<?php
+					require('db.php');
+					$comments = mysqli_query($con, "SELECT * FROM `comments` WHERE articles_id = '".$art['id']."'");
+			?>
+			
+			<?php
+				while( $com = mysqli_fetch_assoc($comments) )
+				{
+					?>
+						<article>	
+							<div class="commain">
+								<h4><?php echo $com['author']; ?></h4>
+								<p>Комментарий:<?php echo $com['text']; ?></p></a>
+								<p>Дата комментирования:<?php echo $com['pubdate']; ?></p>
+							</div>
+						</article>
+
+				<?php
+				}
+			?>
+					
+					
+					<div class="commain">
+					<h4>Добавить комментарий</h4>
+							<form method="POST" action="/post.php?id=<?php echo $art['id']; ?>">
+							<label class="label_2">Ваше мнение: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input class="input" type="text" name="text" placeholder="Ваш комментарий"  /> </br></label><br/></br></br></br>
+							<input class="inp_2" type="submit" name="do_post" value="Хоба" /><br/><br/><br/>
+							</form>
+							<?php
+								$author = $_SESSION['username'];
+								if( isset($_POST['do_post']) )
+								{
+									$errors = array();
+									
+									if( $_POST['text'] == '')
+									{
+										$errors[] = 'Серьёзно думал, что это пройдёт?<img src ="da.jpg">';
+									}
+									if( empty($errors) )
+									{
+										mysqli_query($con, "INSERT INTO `comments` (`author`, `text`, `pubdate`, `articles_id`) VALUES ('$author', '".$_POST['text']."', NOW(), '".$art['id']."')");
+									}	 else {
+										echo $errors['0'];
+									}
+								}
+							?>
+					</div>
+		</div>
+		<?php
+							}
+				?>
 		<div id="down">
 			<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
 		</div>
