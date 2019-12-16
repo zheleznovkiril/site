@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require('db.php');
 ?>
 <!DOCTYPE html>
 
@@ -8,7 +9,6 @@
 		<meta charset="utf-8" />
 		<title>Добавление поста | ДЗ</title>
 		<link href="style.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="imghover.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	</head>
 	<body>
@@ -39,14 +39,39 @@
 			</div>
 		</div>
 		<form name="add" method="POST">
-		<div id="page" class="content_2">
-			<?php
-							$id = 20;
-							$query = "SELECT * FROM news WHERE id=20";
-							$result = mysql_query($query);
-							$headline = $result['headline'];
-							echo "<h1>"$result=[3]" </h1>";
-					?>
+		<div id="page" class="content">
+		
+				<?php
+							$article = mysqli_query($con, "SELECT * FROM `articles` WHERE `id` = " . (int) $_GET['id']);
+							
+							if( mysqli_num_rows($article) <= 0 )
+							{
+								?>
+								<div class="me">
+										<img src="sorry.png" width="300" alt="" />
+								</div>
+								<div class="me2">
+									<p>Извините, но кто-то украл статью.</p>
+								</div>
+				
+							</div>
+								<?php
+							} else 
+							{ 
+								$art = mysqli_fetch_assoc($article);
+								?> 
+								<div class="me">
+										<img src="avatar.png" width="300" alt="" />
+								</div>
+								<div class="me2">
+									<h1><?php echo $art['title'] ?></h1>
+									<p><?php echo $art['text'] ?></p>
+								</div>
+				<?php
+							}
+				?>
+				
+				
 		</div>
 		</form>		
 	</div>	

@@ -51,7 +51,7 @@
 					?>
 						<article>	
 							<div class='block_1'>
-								<a href="article.php?id=<?php echo $art['id']; ?>"><h1><?php echo $art['title']; ?></h1>
+								<a href="post.php?id=<?php echo $art['id']; ?>"><h2><?php echo $art['title']; ?></h2>
 								<p><?php if($art['categorie_id']==1) echo '<img width=195 src="online.jpg">';
 										if($art['categorie_id']==2) echo '<img width=195 src="offline.jpg">'; ?></p></a>
 								<p><?php echo $art['text']; ?></p>
@@ -61,6 +61,11 @@
 				<?php
 				}
 			?>
+			<div class="block_1"><a href="addpost.php"><h2>Добавить статью</h2>
+			<p><img width=195 src="write.jpg"></p></a>
+			<p>Неужели ТЫ, ОДМЕН, ХОЧЕШЬ РАЗРУШИТЬ ТО, ЧТО Я ДЕЛАЛ?! Ладно, дерзай.</p>
+			</div>
+			</div>
 	</div>
 	<div id="down">
 		<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
