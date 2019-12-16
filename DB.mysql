@@ -1,0 +1,43 @@
+Таблица с данными пользователей: 
+CREATE TABLE IF NOT EXISTS users (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(50) NOT NULL,
+  status varchar(10) NOT NULL DEFAULT 'plebei',
+  email varchar(50) NOT NULL,
+  password varchar(50) NOT NULL,
+  trn_date datetime NOT NULL,
+  PRIMARY KEY (id)
+);
+
+Таблица для комментариев:
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `pubdate` datetime NOT NULL,
+  `articles_id` int(10) NOT NULL
+);
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+Таблица добавления постов:
+CREATE TABLE articles (
+  id int(11) NOT NULL,
+  title varchar(255) NOT NULL,
+  text text NOT NULL,
+  categorie_id int(10) NOT NULL,
+  datetime datetime NOT NULL,
+  views int(10) NOT NULL DEFAULT '0'
+);
+ALTER TABLE articles
+  ADD PRIMARY KEY (id);
+
+
+ALTER TABLE articles
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
+
+
