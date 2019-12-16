@@ -42,6 +42,11 @@ hr {
 	margin: 0px auto;
 }
 
+.content_2 {
+	width: 90%;
+	margin: 0px auto;
+}
+
 #main
 {
 	background: url(fon.png) no-repeat center center;
@@ -186,6 +191,11 @@ label {
 	position: absolute;
 }
 
+.label_2 {
+	left: 20%;
+	position: absolute;
+}
+
 .reg {
 	left: 44%;
 	position: absolute;
@@ -200,11 +210,6 @@ input {
     font-family: Tahoma;
 }	
 
-.vvesti {
-	top: 0%;
-	position: relative;
-}
-
 .inp {
 	left: 45%;
 	position: absolute;
@@ -213,4 +218,16 @@ input {
 .not {
 	position: absolute;
 	left: 40%;
+}
+
+.block_1 {
+	width: 200px;
+	height: 320px;
+	float: left;
+	margin-left: 25px;
+	margin-top: 25px;
+	padding: 10px;
+	border: 2px solid;
+	border-radius: 10px;
+	overflow: hidden;
 }

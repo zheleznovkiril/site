@@ -6,7 +6,7 @@
 <html>
 		<head>
 			<meta charset="utf-8" />
-			<title>Об "авторе" | ДЗ</title>
+			<title>А нету | ДЗ</title>
 			<link href="style.css" rel="stylesheet" type="text/css" media="all" />
 			<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 		</head>
@@ -21,13 +21,13 @@
 					<ul>
 						<li><a href="index.php">Главная страница</a></li>
 						<li><?php if(isset($_SESSION["username"])){
-						echo "<a href='chat.php'>Чатик</a></li>";}
+					echo "<a href='chat.php'>Чатик</a></li>";}
 						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?></li>
 						<li><a href="stat.php">Все статьи</a></li>
-						<li class="vibor"><a>Об "авторе"</a></li>
+						<li><a href="author.php">Об "авторе"</a></li>
 						<li><a href="#">Цитатки</a></li>
 					<?php if(isset($_SESSION["username"])){
-						echo "<li><a href='account.php'><img id='v1' src='pol.png'></a></li>";}
+						echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
 						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
 					<?php 
 						if(isset($_SESSION["username"]))
@@ -37,12 +37,10 @@
 			</div>
 			<div id="page" class="content">
 				<div class="me">
-						<img border="2" src="me.gif" width="500" alt="" />
+						<img src="sorry.png" width="300" alt="" />
 				</div>
 					<div class="me2">
-							<p>Это, собственно, автор сайта.</p>
-							<p>Возраст: 18 лет.</p>
-							<p>E-mail: zheleznov.kirill01@mail.ru</p>
+							<p>УПС... Похоже Вы не авторизованы. Чтобы узнать, что тут, авторизуйтесь.</p>
 					</div>
 				
 			</div>

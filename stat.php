@@ -1,4 +1,4 @@
-<?php
+<?
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Мой сайтик | ДЗ</title>
+		<title>Статьи | ДЗ</title>
 		<link href="style.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="imghover.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -22,11 +22,11 @@
 			</div>
 			<div id="menu" class="content">
 				<ul>
-					<li class="vibor"><a href="#">Главная страница</a></li>
+					<li><a href="index.php">Главная страница</a></li>
 					<li><?php if(isset($_SESSION["username"])){
 					echo "<a href='chat.php'>Чатик</a></li>";}
 						else{echo "<a href='dontauth.php'>Чатик</a></li>";} ?>
-					<li><a href="stat.php">Все статьи</a></li>
+					<li class="vibor"><a href="#">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
 					<?php if(isset($_SESSION["username"])){
@@ -39,29 +39,28 @@
 			</div>
 		</div>
 		<div id="page" class="content">
-			<div class="block1">
-				<div class="cent">
-					<h2>Что тут?</h2>
-				</div>
-				<p>Вы на новостном сайте, посвящённом видеоиграм. Тут Вы можете увидеть последние события игровой индустрии и различные статьи, посвящённой этой тематике. Спасибо за то, что посетили мой гик-уголок. gl hf :)</p>
-			</div>
-			<div class="block2">
-				<div>
-					<h2>Оффлайн-новости </h2>
-				</div>
-				<img src="offline.jpg" width="282" height="150" alt="" />
-				<p>Эти статьи посвящены всему, что связано с сингловыми играми.</p>
-			</div>
-			<div class="block3">
-				<div>
-					<h2>Онлайн-новости</h2>
-				</div>
-				<img src="online.jpg" width="282" height="150" alt="" />
-				<p>Как не сложно догадаться - жмякнув сюда, Вы увидите статьи, посвященные онлайн сегменту.</p>
-			</div>
 			
-		</div>
+			<?php
+					require('db.php');
+					$articles = mysqli_query($con, "SELECT * FROM `articles`");
+			?>
+			
+			<?php
+				while( $art = mysqli_fetch_assoc($articles) )
+				{
+					?>
+						<article>	
+							<div class='block_1'>
+								<a href="article.php?id=<?php echo $art['id']; ?>"><h1><?php echo $art['title']; ?></h1>
+								<p><?php if($art['categorie_id']==1) echo '<img width=195 src="online.jpg">';
+										if($art['categorie_id']==2) echo '<img width=195 src="offline.jpg">'; ?></p></a>
+								<p><?php echo $art['text']; ?></p>
+							</div>
+						</article>
 
+				<?php
+				}
+			?>
 	</div>
 	<div id="down">
 		<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
