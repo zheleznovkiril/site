@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if(isset($_SESSION)){
+		header("Location: dontauth.php");
+	}
 ?>
 <!DOCTYPE html>
 
@@ -29,12 +32,7 @@
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
-					<?php if(isset($_SESSION["username"])){
-					echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
-						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
-					<?php 
-						if(isset($_SESSION["username"]))
-							echo "<li><a href='#'><img id='v' class='logout' src='vihod.png'></a></li>" ?>
+					<li><a href='login.php'><img id='v1' src='pol.png'></a></li>
 				</ul>
 			</div>
 		</div>

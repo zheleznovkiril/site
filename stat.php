@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -61,10 +61,13 @@
 				<?php
 				}
 			?>
-			<div class="block_1"><a href="addpost.php"><h2>Добавить статью</h2>
-			<p><img width=195 src="write.jpg"></p></a>
+				<?php if($_SESSION['username'] == 'admin') echo "
+			<div class='block_1'><a href='addpost.php'><h2>Добавить статью</h2>
+			<p><img width=195 src='write.jpg'></p></a>
 			<p>Неужели ТЫ, ОДМЕН, ХОЧЕШЬ РАЗРУШИТЬ ТО, ЧТО Я ДЕЛАЛ?! Ладно, дерзай.</p>
 			</div>
+			 "
+			?>
 			</div>
 	</div>
 	<div id="down">

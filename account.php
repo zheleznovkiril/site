@@ -35,15 +35,28 @@
 					</ul>
 				</div>
 			</div>
+			
 			<div id="page" class="content">
 				<div class="me">
-						<img border="2" src="avatar.png" width="300" alt="" />
+				<?php if($_SESSION['username'] != 'admin') echo "
+						<img border='2' src='avatar.png' width=300' />
+						"?>
+				<?php if($_SESSION['username'] == 'admin') echo "
+						<img border='2' src='admin.jpg' width=300' />
+						" ?>
+						
 				</div>
 					<div class="me2">
 							<p>Думаю, Вы сами знаете, что вы зарегистрированы под ником <?php
 											echo $_SESSION['username'];?>.</p>
+							<?php if($_SESSION['username'] != 'admin') echo "
 							<p>В будующем я добавлю и другие Ваши данные сюда, но сейчас мне лень.</p>
-				
+							"?>
+							<?php if($_SESSION['username'] == 'admin') echo "
+							<p> Ух ты, привет, админ. Надеюсь, ты помнишь, что с большой силой
+							приходит большая ответственность, поэтому, прежде чем вершить судьбу пользователей, хорошо подумай.</p>
+							<a href='admin.php'>'<input class='inp' type='submit' name='submit' value='Жмяк' /></a>
+							"?>
 					</div>
 				
 			</div>

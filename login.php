@@ -1,5 +1,8 @@
 <?php
 	session_start();
+		if(isset($_SESSION)){
+		header("Location: index.php");
+	}
 ?>
 <!DOCTYPE html>
 
@@ -56,8 +59,9 @@
 						 $query = "SELECT * FROM `users` WHERE username='$username'	and password='".md5($password)."'";
 						 $result = mysqli_query($con,$query) or die(mysql_error());
 						 $rows = mysqli_num_rows($result);
-							if($rows==1){
-						 $_SESSION['username'] = $username;
+							if($rows==1){		
+								$_SESSION['username'] = $username;
+								$_SESSION['password'] = $password;
 					header("Location: index.php");}
 					 else{
 					 echo "</br><p class='not'>Неверно введён логин/пароль.</p>

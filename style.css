@@ -252,3 +252,7 @@ input {
 	margin-top: 25px;
 }
 
+.pan {
+	position: absolute;
+	left:30%
+}
