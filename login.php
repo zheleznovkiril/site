@@ -1,6 +1,6 @@
 <?php
 	session_start();
-		if(isset($_SESSION)){
+		if(isset($_SESSION["username"])){
 		header("Location: index.php");
 	}
 ?>
@@ -34,7 +34,7 @@
 					<li><a href="#">Цитатки</a></li>
 					<?php if(isset($_SESSION["username"])){
 					echo "<li><a href='#'><img id='v1' src='pol.png'></a></li>";}
-						else{echo "<li><a href='login.php'><img id='v1' src='pol.png'></a></li>";} ?>
+						else{echo "<li><a href='reg.php'><img id='v1' src='pol.png'></a></li>";} ?>
 				</ul>
 			</div>
 		</div>

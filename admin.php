@@ -42,11 +42,12 @@
 		</div>
 		<form name="add" method="POST">
 		<div id="page" class="content_2">
+		
 				<h1 class="reg">Кто цель?</h1></br></br></br></br>
 				<p>Выбери того, кого хочешь уничтожить, низвести до атомов. </p>
 				<label class="label_2">Ну и кто же этот бедолага? &nbsp&nbsp <input class="input" type="text" name="username" placeholder="Введи его имя" /> </br></label><br/></br></br></br>
 				<input class="inp" type="submit" name="F" value="Щёлк" /><br/><br/><br/>
-			<div class='pan'>
+			
 
 		<?php
 							require('db.php');

@@ -254,5 +254,9 @@ input {
 
 .pan {
 	position: absolute;
-	left:30%
+	left:30%;
+}
+.pagin {
+	position: relative;
+	left:40%;
 }

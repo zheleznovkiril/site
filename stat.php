@@ -42,10 +42,48 @@
 			
 			<?php
 					require('db.php');
-					$articles = mysqli_query($con, "SELECT * FROM `articles`");
-			?>
-			
-			<?php
+					$per_page = 10;
+				$page = 1;
+				
+				if(isset($_GET['page'])) {
+					$page = (int) $_GET['page'];
+				}
+				
+				$total_count_q = mysqli_query($con, "SELECT COUNT('id') AS `total_count` FROM `articles`");
+				$total_count = mysqli_fetch_assoc($total_count_q);
+				$total_count = $total_count['total_count'];
+				
+				$total_pages = ceil($total_count / $per_page);
+				if($page <= 1 || $page > $total_pages){
+					$page = 1;
+				}
+				
+				$offset = ($per_page * $page) - $per_page;
+				$articles = mysqli_query($con, "SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $offset,$per_page");
+				
+				$articles_exist = true;				
+				if(mysqli_num_rows($articles) <= 0 ){
+					echo 'А статей то нет.';
+					$articles_exist = false;
+				}
+				?>
+				
+					<?php
+				
+					if($articles_exist == true){
+						echo "<div class='pagin'>";
+						if($page > 1){
+						echo "<a href='/stat.php?page=".($page - 1)."'>Прошлая страница </a>";
+						}
+						if($page < $total_pages){
+							echo "<a href='/stat.php?page=".($page + 1)."'>Следующая страница</a>";
+						}
+						echo "</div>";
+					}
+				
+				?>
+				
+				<?php
 				while( $art = mysqli_fetch_assoc($articles) )
 				{
 					?>
@@ -69,6 +107,7 @@
 			 "
 			?>
 			</div>
+			
 	</div>
 	<div id="down">
 		<p>&copy; ИУ4. Разработано <a href="https://vk.com/id559569521">Кириллом Железновым</a><p>Ничто не истинно, всё дозволено.</p></p>
