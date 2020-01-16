@@ -23,9 +23,7 @@
 			<div id="menu" class="content">
 				<ul>
 					<li><a href="index.php">Главная страница</a></li>
-					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='#'>Что-то</a></li>";}
-						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
+					<li><?php echo "<a href='dontauth.php'>Что-то</a></li>"; ?>
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
@@ -69,7 +67,7 @@
 									<p><?php echo $art['text']; ?></p>
 									<a><?php echo $art['views']; ?> просмотров</a><br/>
 									<a>Дата создания: <?php echo $art['datetime']; ?></a>
-									<?php if(isset($_SESSION['username'])) {if($_SESSION['username'] == 'admin') {?> <p><form>
+									<?php if(isset($_SESSION['username'])) {if($_SESSION['status'] == 'admin') {?> <p><form>
 										<input name='delete' type='submit' method='POST' action='/post.php' value="Удалить статью" />
 										</form></p><?php } ?>
 									<?php  if( isset($_POST['delete'])){

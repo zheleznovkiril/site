@@ -23,9 +23,7 @@
 			<div id="menu" class="content">
 				<ul>
 					<li><a href="index.php">Главная страница</a></li>
-					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='chat.php'>Что-то</a></li>";}
-						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?>
+					<li><?php echo "<a href='dontauth.php'>Что-то</a></li>"; ?>
 					<li class="vibor"><a href="#">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
@@ -99,7 +97,7 @@
 				<?php
 				}
 			?>
-				<?php if($_SESSION['username'] == 'admin') echo "
+				<?php if($_SESSION['status'] == 'admin') echo "
 			<div class='block_1'><a href='addpost.php'><h2>Добавить статью</h2>
 			<p><img width=195 src='write.jpg'></p></a>
 			<p>Неужели ТЫ, ОДМЕН, ХОЧЕШЬ РАЗРУШИТЬ ТО, ЧТО Я ДЕЛАЛ?! Ладно, дерзай.</p>

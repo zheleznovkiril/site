@@ -1,5 +1,8 @@
 <?php
 	session_start();
+		if(!isset($_SESSION["username"])){
+		header("Location: index.php");
+	}
 ?>
 <!DOCTYPE html>
 
@@ -20,9 +23,7 @@
 				<div id="menu" class="content">
 					<ul>
 						<li><a href="index.php">Главная страница</a></li>
-						<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='#'>Что-то</a></li>";}
-						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
+						<li><?php echo "<a href='dontauth.php'>Что-то</a></li>"; ?>
 						<li><a href="stat.php">Все статьи</a></li>
 						<li><a href="author.php">Об "авторе"</a></li>
 						<li><a href="#">Цитатки</a></li>
@@ -38,10 +39,10 @@
 			
 			<div id="page" class="content">
 				<div class="me">
-				<?php if($_SESSION['username'] != 'admin') echo "
+				<?php if($_SESSION['status'] != 'admin') echo "
 						<img border='2' src='avatar.png' width=300' />
 						"?>
-				<?php if($_SESSION['username'] == 'admin') echo "
+				<?php if($_SESSION['status'] == 'admin') echo "
 						<img border='2' src='admin.jpg' width=300' />
 						" ?>
 						
@@ -49,13 +50,17 @@
 					<div class="me2">
 							<p>Думаю, Вы сами знаете, что вы зарегистрированы под ником <?php
 											echo $_SESSION['username'];?>.</p>
-							<?php if($_SESSION['username'] != 'admin') echo "
-							<p>В будующем я добавлю и другие Ваши данные сюда, но сейчас мне лень.</p>
-							"?>
-							<?php if($_SESSION['username'] == 'admin') echo "
+							<p>Ваше мыло: <?php
+											echo $_SESSION['email'];?>.</p>
+							<p>Зарегистрирован: <?php
+											echo $_SESSION['date'];?>.</p>
+							<?php if($_SESSION['status'] == 'admin') echo "
 							<p> Ух ты, привет, админ. Надеюсь, ты помнишь, что с большой силой
 							приходит большая ответственность, поэтому, прежде чем вершить судьбу пользователей, хорошо подумай.</p>
-							<a href='admin.php'>'<input class='inp' type='submit' name='submit' value='Жмяк' /></a>
+							<a href='admin.php'><input class='inp' type='submit' name='submit' value='Жмяк' /></a>
+							"?>
+							<?php if($_SESSION['status'] != 'admin') echo "
+							<p>Ты не одмен.</p>
 							"?>
 					</div>
 				

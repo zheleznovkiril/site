@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	if(isset($_SESSION)){
-		header("Location: dontauth.php");
+	if(isset($_SESSION["username"])){
+		header("Location: index.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -26,9 +26,7 @@
 			<div id="menu" class="content">
 				<ul>
 					<li><a href="index.php">Главная страница</a></li>
-					<li><?php if(isset($_SESSION["username"])){
-					echo "<a href='#'>Что-то</a></li>";}
-						else{echo "<a href='dontauth.php'>Что-то</a></li>";} ?></li>
+					<li><?php echo "<a href='dontauth.php'>Что-то</a></li>"; ?>
 					<li><a href="stat.php">Все статьи</a></li>
 					<li><a href="author.php">Об "авторе"</a></li>
 					<li><a href="#">Цитатки</a></li>
